@@ -1,0 +1,47 @@
+function digitSum(number){
+  
+  let digitSum = 0;
+
+  for(let i = 0; i < number.length; i++){
+
+    digitSum += parseInt(number[i]);
+
+  }
+
+  return digitSum;
+
+}
+
+function checkSum(number){
+
+  let sum = 0;
+
+  for(let i = 0; i < number.length; i++){
+
+    if(i % 2 == 0){
+
+      sum += digitSum((2*parseInt(number[i])).toString());
+
+      console.log("even: " + sum);
+
+    } else{
+
+      sum += parseInt(number[i]);
+
+      console.log("odd: " + sum);
+
+    }
+
+  }
+
+  console.log(sum);
+
+  return sum % 10 == 0;
+
+}
+
+function isPaliPair(a, b){
+
+  return a.split("").reverse().join("") === b;
+
+}

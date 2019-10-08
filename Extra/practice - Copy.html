@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html style="height:100%; width:100%">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+
+  <body style="height:100%; width:100%">
+
+    <button>Generate Grid</button>
+
+    <input type="radio" id="swap" name="mode" value="swap">Swap
+    <input type="radio" id="fill" name="mode" value="fill" checked>Fill
+
+    <div id="container"></div>
+
+    <div id="primary-color">
+      <strong>Primary Color:</strong>
+      <input type="radio" name="primary" value="black" checked>Black
+      <input type="radio" name="primary" value="white">White
+      <input type="radio" name="primary" value="red">Red
+      <input type="radio" name="primary" value="blue">Blue
+      <input type="radio" name="primary" value="yellow">Yellow
+      <input type="radio" name="primary" value="green">Green
+      <input type="radio" name="primary" value="random">Random
+    </div>
+
+    <div id="secondary-color">
+      <strong>Swap Color:</strong>
+      <input type="radio" name="secondary" value="black">Black
+      <input type="radio" name="secondary" value="white" checked>White
+      <input type="radio" name="secondary" value="red">Red
+      <input type="radio" name="secondary" value="blue">Blue
+      <input type="radio" name="secondary" value="yellow">Yellow
+      <input type="radio" name="secondary" value="green">Green
+    </div>
+
+    <script>
+      const GRID_HEIGHT = 720;
+      const GRID_WIDTH = 720;
+
+      const container = document.querySelector("#container");
+      container.setAttribute("style", `width: ${GRID_WIDTH}px; height: ${GRID_HEIGHT}px; border: 3px solid green;`);
+
+      const gridButton = document.querySelector("button");
+      gridButton.addEventListener("click", e => {generateGrid(prompt("What size?"));});
+      
+      let primaryColorRadios = document.getElementsByName("primary");
+      let secondaryColorRadios = document.getElementsByName("secondary");
+      
+      let primaryColor = "black";
+      let secondaryColor = "white";
+
+      generateGrid(16);
+      
+      function digitSum(number){
+        let sum = 0;
+        while (number){
+          sum += number % 10;
+          number = Math.floor(number/10);
+        }
+      }
+
+      function applyDim(color, dimFactor){
+        let dimAmount = Math.floor(.10*dimFactor*16777215);
+        if(digitSum(color) < digitSum(dimAmount)) return "000";
+        return (color -  Math.floor(.10*dimFactor*16777215));
+      }
+
+      function generateRandomColor(dimFactor){
+        let color =  applyDim(Math.floor(Math.random()*16777216),dimFactor);;
+        color = Math.floor(Math.random()*16777216-(1677216*.1*dimFactor));
+        if(digitSum(color) < digitSum(1677216*.1*dimFactor)) color = "000";
+        return color.toString(16);
+      }
+
+      function updatePrimaryColor(mouseOvers){
+        for(let i = 0;i < primaryColorRadios.length;i++){
+          if(primaryColorRadios[i].checked) {
+            if(primaryColorRadios[i].value === "random"){
+              primaryColor = `#${generateRandomColor(mouseOvers)}`;
+            } else {
+            primaryColor = primaryColorRadios[i].value;
+            }
+          }
+        }
+      }
+
+      function updateSecondaryColor(){
+        for(let i = 0;i < secondaryColorRadios.length;i++){
+          if(secondaryColorRadios[i].checked) secondaryColor = secondaryColorRadios[i].value;
+        }
+      }
+
+      function updateColors(mouseOvers){
+        updatePrimaryColor(mouseOvers);
+        updateSecondaryColor();
+      }
+
+      function swapColors(node, firstColor, secondColor){
+        if(node.style.background == firstColor){
+          node.style.background = secondColor;
+        } else if (node.style.background == secondColor){
+          node.style.background = firstColor;
+        }
+      }
+
+      function clearGrid(){
+        while(document.querySelector("#container").firstChild) {
+          document.querySelector("#container").firstChild.remove();
+        }
+      }
+
+      function generateGrid(size){
+        clearGrid();
+        for(var i = 0;i < size; i++){
+
+          const row = document.createElement("div");
+          row.setAttribute("style", `width: 100%; height: ${GRID_HEIGHT/size}px;`);
+
+          for(var j = 0; j < size; j++){
+            const cell = document.createElement("div"); 
+            cell.setAttribute("style", `background: white; width: ${GRID_WIDTH/size}px;height: 100%;float: left;`);
+            let mouseOvers = 0;
+            cell.addEventListener("mouseover", e => {
+            mouseOvers++;
+            updateColors(mouseOvers);
+            if(document.querySelector("#swap").checked) {swapColors(e.target, primaryColor, secondaryColor)}
+            else {cell.style.background = primaryColor;}
+            });
+
+            row.appendChild(cell);
+          }
+        container.appendChild(row);
+        }
+      }
+    </script>
+  </body>
+</html> 

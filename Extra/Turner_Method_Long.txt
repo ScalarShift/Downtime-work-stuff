@@ -1,0 +1,90 @@
+The Turner Method:
+
+1. Note the time at which
+you want to see the available
+balance.
+
+2. Find the last transaction
+that posted before that time.
+
+3. Note the ledger balance
+after the transaction.
+
+4. Find, note, and sum all
+holds that were active on
+the account at the time you're
+looking for.
+
+5. Subtract the sum of all
+holds from the previously
+obtained ledger balance.
+
+Et voila! Tu a fini!
+
+Applying the Turner Method to POS Courtesy Pay
+
+If a transaction is classified as Sig Auth/Sig Purch
+courtesy pay's utilization is determined by the account's
+ledger balance at the time the transaction posts (the
+Sig Purch) as opposed to when it is authorized (the
+Sig Auth). Thus, to see if courtesy pay was applied in
+error or not, one can simply check the transaction
+history and follow the "New Balance" column, ignoring
+any and all holds.
+
+However, if a transaction is classified as POS (Point of
+sale) or ATM, courtesy pay's utilization is determined 
+by the available balance at the time the transaction is
+authorized.
+Normally this isn't an issue because these transactions
+post more or less immediately after they're authorized.
+Some merchants, though, hold off on this and wait sometimes
+a few days to push the transaction through.
+When this happens courtesy pay is still based on the
+available balance from those few days ago so determine
+whether or not courtesy pay should have been used we
+need to find out what that balance was. We can do so
+using the Turner method.
+
+1. Note the time at which
+you want to see the available
+balance.
+
+In this case we want to see the balance at the time the
+transaction was authorized so we need to find that time.
+
+2. Find the last transaction
+that posted before that time.
+
+If looking at transaction history the effective date on
+the transaction is the day it was authorized so it can
+be used to narrow our search in the A-Bubble.
+
+Once there simply look for that date, merchant and amount,
+and it should repeat the same POS or ATM that's shown
+in transaction history.
+
+Note the exact time this authorization came through
+
+Go back to transaction history and locate the last
+transaction that posted before this time
+
+3. Note the ledger balance after the transaction.
+
+4. Find, note, and sum all
+holds that were active on
+the account at the time you're
+looking for.
+
+To narrow your search, skip over all holds that show
+a released date that is before what you're looking for.
+When you find a hold that was released on or after the
+date in question, open it to check that the effective
+date/time is before the time we're looking for and that
+it was released after. For currently active holds, check
+the effective date to if it was active at the right time.
+
+Add up all the hold amounts and subtract that amount from
+The previously obtained ledger balance. This amount should
+equal the "Previous Available" column before the 
+transactions we're checking and should be below 0.

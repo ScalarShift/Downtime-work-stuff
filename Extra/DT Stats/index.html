@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Down-Time Calculator</title>
+    <style>
+      table {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Down-Time Calculator</h2>
+    <table>
+      <tr>
+        <td>Calls Taken:</td>
+        <td><input type="text", id="numOfCalls", value="0"></input></td>
+      </tr>
+      <tr>
+        <td>Average Time:</td> 
+        <td><input type="text", id="avgCallTime", value="0:00"></input></td>
+      </tr>
+      <tr>    
+        <td><input type="radio", name="dayType", value="7:55", checked="checked">Normal Day</input></td>
+        <td><input type="radio", name="dayType", value="9:00">Saturday</input></td>
+      </tr>
+      <tr>
+        <td><input type="radio", name="lunchType", value="1", checked="checked">1 hr Lunch</input></td>
+        <td><input type="radio", name="lunchType", value="0.5">30 min Lunch</input></td>
+      </tr>
+    </table>
+
+    <br>
+
+    <table>
+      <tr>
+        <td><input type="checkbox", id="AMBreak", value="AMBreak"></input>AM Break</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox", id="Lunch", value="Lunch"></input>Lunch</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox", id="PMBreak", value="PMBreak"></input>PM Break</td>
+      </tr>
+    </table>
+
+    <br><button id="submit">Submit</button><br><br>
+
+    <table>
+      <tr>
+        <td>Total Downtime:</td>
+        <td><div id="totalDTDisplay">0.00 hours</div></td>
+      </tr>
+      <tr>
+        <td>Downtime %:</td>
+        <td><div id="DTPercentDisplay">100.00 %</div></td>
+      </tr>
+      <tr>
+        <td>Average Time Between Calls:</td>
+        <td><div id="avgTimeBtwnCalls">0.00 minutes</div></td>
+      </tr>
+    </table>
+    <script src="scripts.js"></script>
+  </body>
+</html>

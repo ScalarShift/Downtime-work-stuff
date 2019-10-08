@@ -1,0 +1,20 @@
+The Turner Method
+As Applied to Back-Dated POS/ATM Transactions
+
+1. Note the time the transaction was authorized
+(not posted) in A-Bubble
+
+2. Find the last transaction that posted before this
+in transaction history and note the ledger balance
+after it.
+
+3. Add up all holds that were active at the time
+the transaction was authorized.
+
+4. Subtract this total from the previously obtained
+ledger balance.
+
+This will give you the available balance in the account
+at the time the transaction was authorized and will help
+you to confirm whether or not a courtesy pay fee
+should have been charged
